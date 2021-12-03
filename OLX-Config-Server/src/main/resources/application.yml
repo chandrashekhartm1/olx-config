@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: configuration-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/chandrashekhartm1/olx-config
+          default-label: main
+          username: chandrashekhartm1
+          password: Mahadeva@1
+          clone-on-start: true    
+server:
+  port: 8888

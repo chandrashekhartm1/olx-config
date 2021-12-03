@@ -1,0 +1,27 @@
+server:
+  port: 9191
+spring:    
+    application:
+      name: API-GATEWAY
+    cloud:
+     gateway:
+      routes:
+      - id: MASTERDATA-SERVICE
+        uri: lb://MASTERDATA-SERVICE
+        predicates:
+          - Path=/olx/masterdata/**
+      - id: ADVERTISE-SERVICE
+        uri: lb://ADVERTISE-SERVICE
+        predicates:
+          - Path=/olx/advertise/**
+      - id: auth-service
+        uri: lb://auth-service
+        predicates:
+          - Path=/olx/user/**
+eureka:
+  client:
+      register-with-eureka: true
+      fetch-registry: true
+      
+  instance:
+    hostname: localhost    prefer-ip-address: true
